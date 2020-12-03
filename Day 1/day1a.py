@@ -16,8 +16,10 @@ def get_input_from_file(file_name):
 
 
 if __name__ == "__main__":
+    # parameters
     numbers = get_input_from_file('input.txt')
     target = 2020
+
     pair = two_sum(numbers, 2020)
     if pair:
         x, y = pair

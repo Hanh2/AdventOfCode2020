@@ -1,3 +1,6 @@
+from day1a import get_input_from_file
+
+
 # O(n^2) time | O(n) space
 # Can be made into O(1) space if numbers list is allowed to be mutated.
 def three_number_sum(numbers, target):
@@ -20,15 +23,11 @@ def three_number_sum(numbers, target):
     return None
 
 
-def get_input_from_file(file_name):
-    with open(file_name, 'r') as f:
-        list_of_numbers = map(int, f.readlines())
-    return list_of_numbers
-
-
 if __name__ == '__main__':
+    # parameters
     numbers = get_input_from_file('input.txt')
     target = 2020
+
     triplet = three_number_sum(numbers, 2020)
     if triplet:
         x, y, z = triplet

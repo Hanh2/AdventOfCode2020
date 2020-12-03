@@ -17,5 +17,5 @@ if __name__ == '__main__':
     for (right, down) in slopes:
         nbr_trees = calc_nbr_trees_encountered(map_of_area, tree, right, down)
         product *= nbr_trees
-    print(f'Product of the number of trees encountered' \
+    print(f'Product of the number of trees encountered'
           f' on each of the listed slopes: {product}')
