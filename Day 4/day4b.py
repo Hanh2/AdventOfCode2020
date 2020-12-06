@@ -5,31 +5,47 @@ from day4a import parse_input
 
 def get_field_checkers() -> dict:
     # regex patterns
-    number_pattern = re.compile(r'^\d+$')
-    height_pattern = re.compile(r'^\d+(cm|in)$')
-    hair_color_pattern = re.compile(r'^#[0-9a-f]{6}$')
+    byr_pattern = re.compile(r'^(19[2-9][0-9]|200[0-2])$')
+    iyr_pattern = re.compile(r'^(20(1[0-9]|20))$')
+    eyr_pattern = re.compile(r'^(20(2[0-9]|30))$')
+    cm_pattern = '1([5-8][0-9]|9[0-3])cm'
+    in_pattern = '(59|6[0-9]|7[0-6])in'
+    hgt_pattern = re.compile(f'^({cm_pattern}|{in_pattern})$')
+    hcl_pattern = re.compile(r'^#[0-9a-f]{6}$')
+    ecl_pattern = re.compile(r'^(amb|blu|brn|gry|grn|hzl|oth)$')
     pid_pattern = re.compile(r'^[0-9]{9}$')
 
-    eye_color_set = {'amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'}
-    check_height = {
-        'cm': lambda x: 150 <= int(x) <= 193,
-        'in': lambda x: 59 <= int(x) <= 76
+    field_checkers = {
+        'byr': lambda x: byr_pattern.match(x),
+        'iyr': lambda x: iyr_pattern.match(x),
+        'eyr': lambda x: eyr_pattern.match(x),
+        'hgt': lambda x: hgt_pattern.match(x),
+        'hcl': lambda x: hcl_pattern.match(x),
+        'ecl': lambda x: ecl_pattern.match(x),
+        'pid': lambda x: pid_pattern.match(x)
     }
+    return field_checkers
 
-    def height_checker(height):
-        if not height_pattern.match(height):
-            return False
-        unit = height[-2:]
-        height_value = height[:-2]
-        return check_height[unit](height_value)
+
+def get_field_checkers2() -> dict:
+    # regex patterns
+    byr_pattern = re.compile(r'^(192[0-9]|200[0-2])$')
+    iyr_pattern = re.compile(r'^(20(1[0-9]|20))$')
+    eyr_pattern = re.compile(r'^(20(2[0-9]|30))$')
+    cm_pattern = '1([5-8][0-9]|9[0-3])cm'
+    in_pattern = '(59|6[0-9]|7[0-6])in'
+    hgt_pattern = re.compile(f'^({cm_pattern}|{in_pattern})$')
+    hcl_pattern = re.compile(r'^#[0-9a-f]{6}$')
+    ecl_pattern = re.compile(r'^(amb|blu|brn|gry|grn|hzl|oth)$')
+    pid_pattern = re.compile(r'^[0-9]{9}$')
 
     field_checkers = {
-        'byr': lambda x: number_pattern.match(x) and 1920 <= int(x) <= 2002,
-        'iyr': lambda x: number_pattern.match(x) and 2010 <= int(x) <= 2020,
-        'eyr': lambda x: number_pattern.match(x) and 2020 <= int(x) <= 2030,
-        'hgt': height_checker,
-        'hcl': lambda x: hair_color_pattern.match(x),
-        'ecl': lambda x: x in eye_color_set,
+        'byr': lambda x: byr_pattern.match(x),
+        'iyr': lambda x: iyr_pattern.match(x),
+        'eyr': lambda x: eyr_pattern.match(x),
+        'hgt': lambda x: hgt_pattern.match(x),
+        'hcl': lambda x: hcl_pattern.match(x),
+        'ecl': lambda x: ecl_pattern.match(x),
         'pid': lambda x: pid_pattern.match(x)
     }
     return field_checkers
