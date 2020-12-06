@@ -3,7 +3,7 @@ import re
 from day4a import parse_input
 
 
-def get_field_checkers():
+def get_field_checkers() -> dict:
     # regex patterns
     number_pattern = re.compile(r'^\d+$')
     height_pattern = re.compile(r'^\d+(cm|in)$')
@@ -35,19 +35,20 @@ def get_field_checkers():
     return field_checkers
 
 
-def count_number_of_valid_passports(list_of_passport_fields, field_checkers):
+def count_number_of_valid_passports(
+        passports: dict, field_checkers: dict) -> int:
     valid_passport_count = 0
-    for passport_fields in list_of_passport_fields:
-        if is_valid_passport(passport_fields, field_checker):
+    for passport in passports:
+        if is_valid_passport(passport, field_checker):
             valid_passport_count += 1
     return valid_passport_count
 
 
-def is_valid_passport(passport_fields, field_checker):
+def is_valid_passport(passport: dict, field_checker: dict) -> bool:
     for field, checker in field_checker.items():
-        if field not in passport_fields:
+        if field not in passport:
             return False
-        field_value = passport_fields[field]
+        field_value = passport[field]
         if not checker(field_value):
             return False
     return True
@@ -57,8 +58,8 @@ if __name__ == '__main__':
     # parameters
     input_filename = 'input.txt'
 
-    list_of_passport_fields = parse_input(input_filename)
+    passports = parse_input(input_filename)
     field_checker = get_field_checkers()
     number_of_valid_passports = count_number_of_valid_passports(
-        list_of_passport_fields, field_checker)
+        passports, field_checker)
     print(f'The number of valid passports is: {number_of_valid_passports}.')
