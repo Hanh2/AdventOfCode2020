@@ -1,3 +1,6 @@
+from utils.parser import get_input_as_list_of_ints
+
+
 def two_sum(numbers, target):
     seen_numbers = set()
     for num in numbers:
@@ -9,15 +12,9 @@ def two_sum(numbers, target):
     return None
 
 
-def get_input_from_file(file_name):
-    with open(file_name, 'r') as f:
-        list_of_numbers = map(int, f.readlines())
-    return list_of_numbers
-
-
 if __name__ == "__main__":
     # parameters
-    numbers = get_input_from_file('input.txt')
+    numbers = get_input_as_list_of_ints('input.txt')
     target = 2020
 
     pair = two_sum(numbers, 2020)

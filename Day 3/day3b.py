@@ -1,5 +1,6 @@
-from day3a import get_map_as_list_of_strings
+from utils.parser import get_input_as_list_of_strings
 from day3a import calc_nbr_trees_encountered
+
 
 if __name__ == '__main__':
     # parameters
@@ -12,7 +13,7 @@ if __name__ == '__main__':
         [7, 1],
         [1, 2]]
 
-    map_of_area = get_map_as_list_of_strings(file_name)
+    map_of_area = get_input_as_list_of_strings(file_name)
     product = 1
     for (right, down) in slopes:
         nbr_trees = calc_nbr_trees_encountered(map_of_area, tree, right, down)

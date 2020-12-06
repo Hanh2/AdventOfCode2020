@@ -1,6 +1,7 @@
 import re
 
-from day4a import parse_input
+from utils.parser import get_full_input_as_string
+from day4a import extract_passports_as_dicts
 
 
 def get_field_checkers() -> dict:
@@ -72,9 +73,10 @@ def is_valid_passport(passport: dict, field_checker: dict) -> bool:
 
 if __name__ == '__main__':
     # parameters
-    input_filename = 'input.txt'
+    filename = 'input.txt'
 
-    passports = parse_input(input_filename)
+    full_input = get_full_input_as_string(filename)
+    passports = extract_passports_as_dicts(full_input)
     field_checker = get_field_checkers()
     number_of_valid_passports = count_number_of_valid_passports(
         passports, field_checker)

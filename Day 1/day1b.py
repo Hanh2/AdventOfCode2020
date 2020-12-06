@@ -1,4 +1,4 @@
-from day1a import get_input_from_file
+from utils.parser import get_input_as_list_of_ints
 
 
 # O(n^2) time | O(n) space
@@ -25,7 +25,7 @@ def three_number_sum(numbers, target):
 
 if __name__ == '__main__':
     # parameters
-    numbers = get_input_from_file('input.txt')
+    numbers = get_input_as_list_of_ints('input.txt')
     target = 2020
 
     triplet = three_number_sum(numbers, 2020)

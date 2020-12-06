@@ -1,7 +1,4 @@
-def get_map_as_list_of_strings(file_name):
-    with open(file_name) as f:
-        input_map = f.read().splitlines()
-    return input_map
+from utils.parser import get_input_as_list_of_strings
 
 
 def calc_nbr_trees_encountered(map_of_area, tree, right, down):
@@ -23,6 +20,6 @@ if __name__ == '__main__':
     tree = '#'
     right, down = 3, 1
 
-    map_of_area = get_map_as_list_of_strings(file_name)
+    map_of_area = get_input_as_list_of_strings(file_name)
     nbr_trees = calc_nbr_trees_encountered(map_of_area, tree, right, down)
     print(f'Number of trees encountered: {nbr_trees}')
