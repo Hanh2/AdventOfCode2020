@@ -18,4 +18,4 @@ if __name__ == '__main__':
     filename = 'input.txt'
     boarding_passes = get_input_as_list_of_strings(filename)
     seat_ids = map(seat_string_to_id, boarding_passes)
-    print(f'The highest seat id is {max(seat_ids)}.')
+    print(f'The highest seat ID is {max(seat_ids)}.')
