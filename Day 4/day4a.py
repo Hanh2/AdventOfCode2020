@@ -1,13 +1,7 @@
-from utils.parser import get_full_input_as_string
+from utils.parser import get_input_as_list_of_strings
 
 
-def extract_passports_as_dicts(full_input: str) -> list:
-    passports_as_strings = full_input.split('\n\n')
-    passports_as_dicts = map(_passport_string_to_dict, passports_as_strings)
-    return passports_as_dicts
-
-
-def _passport_string_to_dict(passport_as_string: str) -> dict:
+def passport_string_to_dict(passport_as_string: str) -> dict:
     field_strings = passport_as_string.split()
     field_key_value_pairs = [
         field_string.split(':') for field_string in field_strings]
@@ -36,8 +30,9 @@ if __name__ == '__main__':
     important_fields = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
     filename = 'input.txt'
 
-    full_input = get_full_input_as_string(filename)
-    passports = extract_passports_as_dicts(full_input)
+    passports_as_strings = get_input_as_list_of_strings(
+        filename, separated_by_blank_lines=True)
+    passports = map(passport_string_to_dict, passports_as_strings)
     number_of_valid_passports = count_number_of_valid_passports(
         passports, important_fields)
     print(f'The number of valid passports is: {number_of_valid_passports}.')

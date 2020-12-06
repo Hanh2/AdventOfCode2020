@@ -1,7 +1,7 @@
 import re
 
-from utils.parser import get_full_input_as_string
-from day4a import extract_passports_as_dicts
+from utils.parser import get_input_as_list_of_strings
+from day4a import passport_string_to_dict
 
 
 def get_field_checkers() -> dict:
@@ -75,8 +75,9 @@ if __name__ == '__main__':
     # parameters
     filename = 'input.txt'
 
-    full_input = get_full_input_as_string(filename)
-    passports = extract_passports_as_dicts(full_input)
+    passports_as_strings = get_input_as_list_of_strings(
+        filename, separated_by_blank_lines=True)
+    passports = map(passport_string_to_dict, passports_as_strings)
     field_checker = get_field_checkers()
     number_of_valid_passports = count_number_of_valid_passports(
         passports, field_checker)
