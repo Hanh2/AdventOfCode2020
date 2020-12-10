@@ -1,7 +1,7 @@
 from utils.parser import get_input_as_list_of_strings
 
 
-def extract_group_answer(group_answers_as_ml_string: list) -> str:
+def extract_group_answer(group_answers_as_ml_string: str) -> str:
     group_answers_as_strings = group_answers_as_ml_string.split('\n')
     group_answers_as_sets = map(set, group_answers_as_strings)
     group_answers_as_set = set.intersection(*group_answers_as_sets)

@@ -1,8 +1,10 @@
+from typing import Iterable
+
 from utils.parser import get_input_as_list_of_strings
 from day5a import seat_string_to_id
 
 
-def get_missing_seat_id(seat_ids):
+def get_missing_seat_id(seat_ids: Iterable[int]) -> int:
     set_of_seat_ids = set(seat_ids)
     min_id = min(set_of_seat_ids)
     max_id = max(set_of_seat_ids)

@@ -1,9 +1,12 @@
-from utils.parser import get_input_as_list_of_ints
+from typing import Iterable, Tuple
+
+from utils.parser import get_input_as_iter_of_ints
 
 
 # O(n^2) time | O(n) space
 # Can be made into O(1) space if numbers list is allowed to be mutated.
-def three_number_sum(numbers, target):
+def three_number_sum(
+        numbers: Iterable[int], target: int) -> Tuple[int, int, int]:
     sorted_numbers = sorted(numbers)
     n = len(sorted_numbers)
     for i in range(n - 2):
@@ -25,7 +28,7 @@ def three_number_sum(numbers, target):
 
 if __name__ == '__main__':
     # parameters
-    numbers = get_input_as_list_of_ints('input.txt')
+    numbers = get_input_as_iter_of_ints('input.txt')
     target = 2020
 
     triplet = three_number_sum(numbers, 2020)

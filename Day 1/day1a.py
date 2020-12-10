@@ -1,7 +1,9 @@
-from utils.parser import get_input_as_list_of_ints
+from typing import Iterable, Tuple
+
+from utils.parser import get_input_as_iter_of_ints
 
 
-def two_sum(numbers, target):
+def two_number_sum(numbers: Iterable[int], target: int) -> Tuple[int, int]:
     seen_numbers = set()
     for num in numbers:
         complement = target - num
@@ -14,10 +16,10 @@ def two_sum(numbers, target):
 
 if __name__ == "__main__":
     # parameters
-    numbers = get_input_as_list_of_ints('input.txt')
+    numbers = get_input_as_iter_of_ints('input.txt')
     target = 2020
 
-    pair = two_sum(numbers, 2020)
+    pair = two_number_sum(numbers, 2020)
     if pair:
         x, y = pair
         answer = x * y

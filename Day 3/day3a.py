@@ -1,7 +1,10 @@
+from typing import List
+
 from utils.parser import get_input_as_list_of_strings
 
 
-def calc_nbr_trees_encountered(map_of_area, tree, right, down):
+def calc_nbr_trees_encountered(
+        map_of_area: List[str], tree: str, right: int, down: int) -> int:
     row = 0
     col = 0
     height = len(map_of_area)

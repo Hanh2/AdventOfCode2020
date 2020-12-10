@@ -1,7 +1,9 @@
+from typing import Tuple
+
 from utils.parser import get_input_as_list_of_strings
 
 
-def check_password(rule, password):
+def check_password(rule: str, password: str):
     positions_string, target_char = rule.split()
     pos_1, pos_2 = positions_as_ints(positions_string)
     first_char = password[pos_1 - 1]
@@ -12,7 +14,7 @@ def check_password(rule, password):
         return second_char == target_char
 
 
-def positions_as_ints(bounds_string):
+def positions_as_ints(bounds_string: str) -> Tuple[int]:
     bounds = bounds_string.split('-')
     return tuple(map(int, bounds))
 
