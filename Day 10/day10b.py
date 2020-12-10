@@ -1,6 +1,6 @@
 # Assumption:
 #  * No duplicate values in input list
-
+from itertools import chain
 from typing import Iterable
 
 from utils.parser import get_input_as_iter_of_ints
@@ -21,7 +21,7 @@ def main():
 def count_nbr_distinct_arrangements(
         joltage_adapters: Iterable[int], max_gap: int) -> int:
     # add zero to the list to reduce number of edge cases
-    sorted_joltage_adapters = sorted((*joltage_adapters, 0))
+    sorted_joltage_adapters = sorted(chain(joltage_adapters, [0]))
     nbr_adapters = len(sorted_joltage_adapters)
     if nbr_adapters == 0 or sorted_joltage_adapters[0] > max_gap:
         return 0
